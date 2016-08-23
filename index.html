@@ -224,9 +224,9 @@
         <h3 id="JSON-RPC-2-0-规范学习"><a href="#JSON-RPC-2-0-规范学习" class="headerlink" title="JSON-RPC 2.0 规范学习"></a>JSON-RPC 2.0 规范学习</h3><ul>
 <li>1 Json-rpc 2.0与传统json的后台接口不同的地方<ul>
 <li>最明显的不同体现在接口的调用上，传统的方法，一般是后端暴露接口给前端，前端进行接口联调；Json-rpc 2.0，在接口的调用上，实际上是调用了后台地址上的一个method方法，由method方法，再去映射到后端服务器的对应逻辑上。</li>
-<li><strong>example</strong><br> `<br>  {<br> “jsonrpc” : “2.0”,<br> <strong>“method” : “subtract”,</strong><br> “params” : {<pre><code>&quot;subtrahend&quot; : 23,
+<li><strong>example</strong><br> <code><br>  {<br> “jsonrpc” : “2.0”,<br> <strong>“method” : “subtract”,</strong><br> “params” : {<pre><code>&quot;subtrahend&quot; : 23,
 &quot;minuend&quot; : 42
-</code></pre> },<br> “id” : 3<br>  }<br> `
+</code></pre> },<br> “id” : 3<br>  }<br> </code>
       
     </div>
     
