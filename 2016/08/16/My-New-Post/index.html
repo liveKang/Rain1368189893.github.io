@@ -4,31 +4,28 @@
   <meta charset="utf-8">
   
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
-  <title>My New Post | Hexo</title>
+  <title>JSON-RPC 2.0 规范学习以及前端接口封装 | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="JSON-RPC 2.0 规范学习以及前端接口封装JSON-RPC 2.0 规范学习
+  <meta name="description" content="JSON-RPC 2.0 规范学习
 1 Json-rpc 2.0与传统json的后台接口不同的地方
-
 最明显的不同体现在接口的调用上，传统的方法，一般是后端暴露接口给前端，前端进行接口联调；Json-rpc 2.0，在接口的调用上，实际上是调用了后台地址上的一个method方法，由method方法，再去映射到后端服务器的对应逻辑上。
-example">
+example    { “jsonrpc” : “2.0”, “">
 <meta property="og:type" content="article">
-<meta property="og:title" content="My New Post">
+<meta property="og:title" content="JSON-RPC 2.0 规范学习以及前端接口封装">
 <meta property="og:url" content="Rain1368189893.github.io/2016/08/16/My-New-Post/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="JSON-RPC 2.0 规范学习以及前端接口封装JSON-RPC 2.0 规范学习
+<meta property="og:description" content="JSON-RPC 2.0 规范学习
 1 Json-rpc 2.0与传统json的后台接口不同的地方
-
 最明显的不同体现在接口的调用上，传统的方法，一般是后端暴露接口给前端，前端进行接口联调；Json-rpc 2.0，在接口的调用上，实际上是调用了后台地址上的一个method方法，由method方法，再去映射到后端服务器的对应逻辑上。
-example">
+example    { “jsonrpc” : “2.0”, “">
 <meta property="og:image" content="http://i4.piimg.com/567571/ff156c44b7c37eb5.png">
-<meta property="og:updated_time" content="2016-08-16T02:16:17.140Z">
+<meta property="og:updated_time" content="2016-08-23T09:32:13.072Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="My New Post">
-<meta name="twitter:description" content="JSON-RPC 2.0 规范学习以及前端接口封装JSON-RPC 2.0 规范学习
+<meta name="twitter:title" content="JSON-RPC 2.0 规范学习以及前端接口封装">
+<meta name="twitter:description" content="JSON-RPC 2.0 规范学习
 1 Json-rpc 2.0与传统json的后台接口不同的地方
-
 最明显的不同体现在接口的调用上，传统的方法，一般是后端暴露接口给前端，前端进行接口联调；Json-rpc 2.0，在接口的调用上，实际上是调用了后台地址上的一个method方法，由method方法，再去映射到后端服务器的对应逻辑上。
-example">
+example    { “jsonrpc” : “2.0”, “">
 <meta name="twitter:image" content="http://i4.piimg.com/567571/ff156c44b7c37eb5.png">
   
     <link rel="alternative" href="/atom.xml" title="Hexo" type="application/atom+xml">
@@ -92,7 +89,7 @@ example">
 						<li>Links</li>
 						
 						
-						<li>About</li>
+						<li>Über</li>
 						
 					</ul>
 				</div>
@@ -228,7 +225,7 @@ example">
         
   
     <h1 class="article-title" itemprop="name">
-      My New Post
+      JSON-RPC 2.0 规范学习以及前端接口封装
     </h1>
   
 
@@ -244,22 +241,12 @@ example">
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="JSON-RPC-2-0-规范学习以及前端接口封装"><a href="#JSON-RPC-2-0-规范学习以及前端接口封装" class="headerlink" title="JSON-RPC 2.0 规范学习以及前端接口封装"></a>JSON-RPC 2.0 规范学习以及前端接口封装</h2><h3 id="JSON-RPC-2-0-规范学习"><a href="#JSON-RPC-2-0-规范学习" class="headerlink" title="JSON-RPC 2.0 规范学习"></a>JSON-RPC 2.0 规范学习</h3><ul>
-<li><p>1 Json-rpc 2.0与传统json的后台接口不同的地方</p>
-<ul>
+        <h3 id="JSON-RPC-2-0-规范学习"><a href="#JSON-RPC-2-0-规范学习" class="headerlink" title="JSON-RPC 2.0 规范学习"></a>JSON-RPC 2.0 规范学习</h3><ul>
+<li>1 Json-rpc 2.0与传统json的后台接口不同的地方<ul>
 <li>最明显的不同体现在接口的调用上，传统的方法，一般是后端暴露接口给前端，前端进行接口联调；Json-rpc 2.0，在接口的调用上，实际上是调用了后台地址上的一个method方法，由method方法，再去映射到后端服务器的对应逻辑上。</li>
-<li><strong>example</strong>  <pre>
-  {
- "jsonrpc" : "2.0",
- <strong>"method" : "subtract",</strong>
- "params" : {
-     "subtrahend" : 23,
-     "minuend" : 42
- },
- "id" : 3
-  }
- </pre>
-</li>
+<li><strong>example</strong><br>  <pre><br>  {<br> “jsonrpc” : “2.0”,<br> <strong>“method” : “subtract”,</strong><br> “params” : {<pre><code>&quot;subtrahend&quot; : 23,
+&quot;minuend&quot; : 42
+</code></pre> },<br> “id” : 3<br>  }<br> </pre><a id="more"></a></li>
 </ul>
 </li>
 <li><p>2 请求对象</p>
@@ -430,7 +417,7 @@ example">
 
 <div class="duoshuo">
 	<!-- 多说评论框 start -->
-	<div class="ds-thread" data-thread-key="My-New-Post" data-title="My New Post" data-url="Rain1368189893.github.io/2016/08/16/My-New-Post/"></div>
+	<div class="ds-thread" data-thread-key="My-New-Post" data-title="JSON-RPC 2.0 规范学习以及前端接口封装" data-url="Rain1368189893.github.io/2016/08/16/My-New-Post/"></div>
 	<!-- 多说评论框 end -->
 	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
 	<script type="text/javascript">
