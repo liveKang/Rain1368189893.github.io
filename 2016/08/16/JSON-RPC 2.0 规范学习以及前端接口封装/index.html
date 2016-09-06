@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" >
+  <title>JSON-RPC 2.0 规范学习以及前端接口封装 | 飘香的个人博客</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="JSON-RPC 2.0 规范学习
+1 Json-rpc 2.0与传统json的后台接口不同的地方
+最明显的不同体现在接口的调用上，传统的方法，一般是后端暴露接口给前端，前端进行接口联调；Json-rpc 2.0，在接口的调用上，实际上是调用了后台地址上的一个method方法，由method方法，再去映射到后端服务器的对应逻辑上。
+example   { “jsonrpc” : “2.0”, “m">
+<meta property="og:type" content="article">
+<meta property="og:title" content="JSON-RPC 2.0 规范学习以及前端接口封装">
+<meta property="og:url" content="Rain1368189893.github.io/2016/08/16/JSON-RPC 2.0 规范学习以及前端接口封装/index.html">
+<meta property="og:site_name" content="飘香的个人博客">
+<meta property="og:description" content="JSON-RPC 2.0 规范学习
+1 Json-rpc 2.0与传统json的后台接口不同的地方
+最明显的不同体现在接口的调用上，传统的方法，一般是后端暴露接口给前端，前端进行接口联调；Json-rpc 2.0，在接口的调用上，实际上是调用了后台地址上的一个method方法，由method方法，再去映射到后端服务器的对应逻辑上。
+example   { “jsonrpc” : “2.0”, “m">
+<meta property="og:image" content="http://i4.piimg.com/567571/ff156c44b7c37eb5.png">
+<meta property="og:updated_time" content="2016-08-23T10:16:43.074Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="JSON-RPC 2.0 规范学习以及前端接口封装">
+<meta name="twitter:description" content="JSON-RPC 2.0 规范学习
+1 Json-rpc 2.0与传统json的后台接口不同的地方
+最明显的不同体现在接口的调用上，传统的方法，一般是后端暴露接口给前端，前端进行接口联调；Json-rpc 2.0，在接口的调用上，实际上是调用了后台地址上的一个method方法，由method方法，再去映射到后端服务器的对应逻辑上。
+example   { “jsonrpc” : “2.0”, “m">
+<meta name="twitter:image" content="http://i4.piimg.com/567571/ff156c44b7c37eb5.png">
+  
+    <link rel="alternative" href="/atom.xml" title="飘香的个人博客" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="//favicon.png">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			
+			<img lazy-src="0" class="js-avatar">
+			
+		</a>
+
+		<hgroup>
+		  <h1 class="header-author"><a href="/">Rain</a></h1>
+		</hgroup>
+
+		
+
+		
+			<div class="switch-btn">
+				<div class="icon">
+					<div class="icon-ctn">
+						<div class="icon-wrap icon-house" data-idx="0">
+							<div class="birdhouse"></div>
+							<div class="birdhouse_holes"></div>
+						</div>
+						<div class="icon-wrap icon-ribbon hide" data-idx="1">
+							<div class="ribbon"></div>
+						</div>
+						
+						<div class="icon-wrap icon-link hide" data-idx="2">
+							<div class="loopback_l"></div>
+							<div class="loopback_r"></div>
+						</div>
+						
+						
+						<div class="icon-wrap icon-me hide" data-idx="3">
+							<div class="user"></div>
+							<div class="shoulder"></div>
+						</div>
+						
+					</div>
+					
+				</div>
+				<div class="tips-box hide">
+					<div class="tips-arrow"></div>
+					<ul class="tips-inner">
+						<li>Menu</li>
+						<li>Tags</li>
+						
+						<li>Links</li>
+						
+						
+						<li>Über</li>
+						
+					</ul>
+				</div>
+			</div>
+		
+
+		<div class="switch-area">
+			<div class="switch-wrap">
+				<section class="switch-part switch-part1">
+					<nav class="header-menu">
+						<ul>
+						
+							<li><a href="/">主页</a></li>
+				        
+							<li><a href="/archives">所有文章</a></li>
+				        
+						</ul>
+					</nav>
+					<nav class="header-nav">
+						<div class="social">
+							
+								<a class="github" target="_blank" href="https://github.com/Rain1368189893" title="github">github</a>
+					        
+								<a class="zhihu" target="_blank" href="https://www.zhihu.com/people/piao-xiang-2" title="zhihu">zhihu</a>
+					        
+								<a class="mail" target="_blank" href="/1368189893@qq.com" title="mail">mail</a>
+					        
+						</div>
+					</nav>
+				</section>
+				
+				
+				<section class="switch-part switch-part2">
+					<div class="widget tagcloud" id="js-tagcloud">
+						
+					</div>
+				</section>
+				
+				
+				
+				<section class="switch-part switch-part3">
+					<div id="js-friends">
+					
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://localhost:4000/">奥巴马的博客</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://localhost:4000/">卡卡的美丽传说</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://localhost:4000/">本泽马的博客</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://localhost:4000/">吉格斯的博客</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://localhost:4000/">习大大大不同</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://localhost:4000/">托蒂的博客</a>
+			        
+			        </div>
+				</section>
+				
+
+				
+				
+				<section class="switch-part switch-part4">
+				
+					<div id="js-aboutme">我是谁，我从哪里来，我到哪里去？我就是我，是颜色不一样的吃货…</div>
+				</section>
+				
+			</div>
+		</div>
+	</header>				
+</div>
+
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"></div>
+  		<h1 class="header-author js-mobile-header hide">Rain</h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+				
+					<img lazy-src="0" class="js-avatar">
+				
+			</div>
+			<hgroup>
+			  <h1 class="header-author">Rain</h1>
+			</hgroup>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">主页</a></li>
+		        
+					<li><a href="/archives">所有文章</a></li>
+		        
+		        <div class="clearfix"></div>
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+						<a class="github" target="_blank" href="https://github.com/Rain1368189893" title="github">github</a>
+			        
+						<a class="zhihu" target="_blank" href="https://www.zhihu.com/people/piao-xiang-2" title="zhihu">zhihu</a>
+			        
+						<a class="mail" target="_blank" href="/1368189893@qq.com" title="mail">mail</a>
+			        
+				</div>
+			</nav>
+		</header>				
+	</div>
+</nav>
+
+      <div class="body-wrap"><article id="post-JSON-RPC 2.0 规范学习以及前端接口封装" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/08/16/JSON-RPC 2.0 规范学习以及前端接口封装/" class="article-date">
+  	<time datetime="2016-08-16T02:13:01.000Z" itemprop="datePublished">2016-08-16</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      JSON-RPC 2.0 规范学习以及前端接口封装
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+        
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="JSON-RPC-2-0-规范学习"><a href="#JSON-RPC-2-0-规范学习" class="headerlink" title="JSON-RPC 2.0 规范学习"></a>JSON-RPC 2.0 规范学习</h3><ul>
+<li>1 Json-rpc 2.0与传统json的后台接口不同的地方<ul>
+<li>最明显的不同体现在接口的调用上，传统的方法，一般是后端暴露接口给前端，前端进行接口联调；Json-rpc 2.0，在接口的调用上，实际上是调用了后台地址上的一个method方法，由method方法，再去映射到后端服务器的对应逻辑上。</li>
+<li><strong>example</strong><br> <pre><br>  {<br> “jsonrpc” : “2.0”,<br> <strong>“method” : “subtract”,</strong><br> “params” : {<pre><code>&apos;subtrahend&apos; : 23,
+&apos;minuend&apos; : 42
+</code></pre> },<br> “id” : 3<br>  }<br> </pre><a id="more"></a></li>
+</ul>
+</li>
+<li><p>2 请求对象</p>
+<pre><code>- 发送一个请求对象至服务端代表一个rpc调用，一个请求对象包含下列成员：
+- **jsonrpc**
+   指定JSON-RPC协议版本的字符串，必须准确写为“2.0”
+</code></pre><ul>
+<li><strong>method</strong><pre><code>包含所要调用方法名称的字符串，以rpc开头的方法名，用英文句号（U+002E or ASCII 46）
+</code></pre>  连接的为预留给rpc内部的方法名及扩展名，且不能在其他地方使用。</li>
+<li><strong>params</strong><pre><code>调用方法所需要的结构化参数值，该成员参数可以被省略。
+</code></pre></li>
+<li><p><strong>id</strong></p>
+<pre><code>已建立客户端的唯一标识id，值必须包含一个字符串、数值或NULL空值。
+</code></pre><p>  如果不包含该成员则被认定为是一个通知。该值一般不为NULL[1]，若为数值则不应该包含小数[2]</p>
+</li>
+<li><p>[1]在请求对象中不建议使用NULL作为id值，因为该规范将使用空值认定为未知id的请求。<br>另外，由于JSON-RPC 1.0 的通知使用了空值，这可能引起处理上的混淆。<br>[2]使用小数是不确定性的，因为许多十进制小数不能精准的表达为二进制小数。</p>
+</li>
+</ul>
+</li>
+<li><p>3 响应对象</p>
+<ul>
+<li>当发起一个rpc调用时，除通知外都必须回复响应。响应表示为一个json对象，使用以下成员：</li>
+<li><strong>jsonrpc</strong><br>  指定JSON-RPC协议版本的字符串，必须准确写为“2.0”</li>
+<li><strong>result</strong><br>  该成员在成功时必须包含。<br>  当调用方法引起错误时必须不包含该成员。<br>  服务端中的被调用方法决定了该成员的值。</li>
+<li><strong>error</strong><br>  该成员在失败是必须包含。<br>  当没有引起错误的时必须不包含该成员。<br>  该成员参数值必须为5.1中定义的对象。</li>
+<li><strong>id</strong><br>  该成员必须包含。<br>  该成员值必须于请求对象中的id成员值一致。<br>  若在检查请求对象id时错误（例如参数错误或无效请求），则该值必须为空值。</li>
+</ul>
+</li>
+<li><p>4 错误对象</p>
+<ul>
+<li>当一个rpc调用遇到错误时，返回的响应对象必须包含错误成员参数，并且为带有下列成员参数的对象</li>
+<li><strong>code</strong></li>
+<li><p>使用数值表示该异常的错误类型。<br>  必须为整数。</p>
+</li>
+<li><p><strong>message</strong></p>
+</li>
+<li><p>对该错误的简单描述字符串。<br>  该描述应尽量限定在简短的一句话。</p>
+</li>
+<li><p><strong>data</strong></p>
+</li>
+<li><p>包含关于错误附加信息的基本类型或结构化类型。该成员可忽略。<br>  该成员值由服务端定义（例如详细的错误信息，嵌套的错误等）。</p>
+<p><img src="http://i4.piimg.com/567571/ff156c44b7c37eb5.png" alt=""></p>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="前端接口封装"><a href="#前端接口封装" class="headerlink" title="前端接口封装"></a>前端接口封装</h3><pre><code>.service(&apos;dataService&apos;, [&apos;$http&apos;,&apos;$q&apos;,&apos;showMsgService&apos;,function ($http, $q, showMsgService) {
+//    post方法
+        this.postJsonData = function (parameters) {
+            var deferred = $q.defer();
+
+            parameters = {
+                &quot;jsonrpc&quot; : &quot;2.0&quot;,
+                 parameters
+            };
+
+            $http({
+                method:&apos;POST&apos;,
+                url: serverUrl,      //字符串，请求的目标
+                data: parameters,    //在发送post请求时使用，作为消息体发送到服务器
+                headers: {&apos;Content-Type&apos;:&apos;application/raw&apos;},    //一个列表，每个元素都是一个函数，返回http头
+                transformRequest: function (parameters) {       //数或者函数数组，用来对http请求的请求体和头信息进行转换，并返回转换后的结果。
+                    var str = [];
+                    for (var p in parameters)
+                        str.push(encodeURIComponent(p) + &quot;=&quot; + encodeURIComponent(parameters[p]));
+                    return str.join(&quot;&amp;&quot;);
+                }
+
+            }).success(function (data, status, headers, config) {
+                if (data.result != 200) {
+                    showMsgService.showMsg(data.msg);
+                    deferred.reject(data);
+                } else {
+                    deferred.resolve(data);
+                }
+            }).error(function (data, status, headers, config) {
+                if(status == 400) {
+                    showMsgService.showMsg(&apos;请求参数错误！&apos;);
+                } else if(status == 405){
+                    showMsgService.showMsg(&apos;无效的请求！&apos;);
+                } else {
+                    showMsgService.showMsg(&apos;网络连接异常，请检查网络后重试！&apos;);
+                }
+            });
+            return deferred.promise;
+        }    
+
+//    get方法
+        this.getJsonData = function (url, parameters) {
+            var deferred = $q.defer();
+
+            parameters = {
+                &quot;jsonrpc&quot; : &quot;2.0&quot;,
+                 parameters
+            };
+
+            $http.get(serverUrl, {params: parameters})
+            .success(function (data, status, headers, config) {
+                if (data.code != 200) {
+                    showMsgService.showMsg(data.desc);
+                    deferred.reject(data);
+                } else {
+                    deferred.resolve(data);
+                }
+            }).error(function (data, status, headers, config) {
+                if(status == 400) {
+                    showMsgService.showMsg(&apos;请求参数错误！&apos;);
+                } else if(status == 405){
+                    showMsgService.showMsg(&apos;无效的请求！&apos;);
+                } else {
+                    showMsgService.showMsg(&apos;网络连接异常，请检查网络后重试！&apos;);
+                }
+            });
+            return deferred.promise;
+        };
+
+    }])
+</code></pre>
+      
+    </div>
+    
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2016/09/05/微信分享被阻止/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption"><</strong>
+      <div class="article-nav-title">
+        
+          微信分享被阻止
+        
+      </div>
+    </a>
+  
+  
+</nav>
+
+  
+</article>
+
+
+<div class="share_jia">
+	<!-- JiaThis Button BEGIN -->
+	<div class="jiathis_style">
+		<span class="jiathis_txt">Share to: &nbsp; </span>
+		<a class="jiathis_button_facebook"></a> 
+    <a class="jiathis_button_twitter"></a>
+    <a class="jiathis_button_plus"></a> 
+    <a class="jiathis_button_tsina"></a>
+		<a class="jiathis_button_cqq"></a>
+		<a class="jiathis_button_douban"></a>
+		<a class="jiathis_button_weixin"></a>
+		<a class="jiathis_button_tumblr"></a>
+    <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
+	</div>
+	<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=1405949716054953" charset="utf-8"></script>
+	<!-- JiaThis Button END -->
+</div>
+
+
+
+
+
+
+<div class="duoshuo">
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="JSON-RPC 2.0 规范学习以及前端接口封装" data-title="JSON-RPC 2.0 规范学习以及前端接口封装" data-url="Rain1368189893.github.io/2016/08/16/JSON-RPC 2.0 规范学习以及前端接口封装/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"true"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+	<!-- 多说公共JS代码 end -->
+</div>
+
+
+
+
+</div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+    	<div class="footer-left">
+    		&copy; 2016 Rain
+    	</div>
+      	<div class="footer-right">
+      		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
+      	</div>
+    </div>
+  </div>
+</footer>
+    </div>
+    
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+
+<script>
+	var yiliaConfig = {
+		fancybox: true,
+		mathjax: true,
+		animate: true,
+		isHome: false,
+		isPost: true,
+		isArchive: false,
+		isTag: false,
+		isCategory: false,
+		open_in_new: false,
+		root: /
+	}
+</script>
+<script src="http://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+<script src="/js/main.js"></script>
+
+
+
+
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';                 
+    }       
+});
+</script>
+
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+  </div>
+</body>
+</html>
